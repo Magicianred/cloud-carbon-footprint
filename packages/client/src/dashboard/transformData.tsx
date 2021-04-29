@@ -101,7 +101,7 @@ const checkUnknownTypes = (dataType: string, value: serviceEstimate) => {
 const sumCO2ByServiceOrRegion = (
   data: EstimationResult[],
   dataType: string,
-): { string: number } => {
+): { string: number | string } => {
   const serviceEstimates = data.flatMap(
     (estimationResult) => estimationResult.serviceEstimates,
   )
@@ -118,6 +118,8 @@ const sumCO2ByServiceOrRegion = (
     } else {
       acc[property] = value.co2e
     }
+
+    acc['cloudProvider'] = initialValue.cloudProvider
 
     return acc
   }, Object.create({}))
@@ -175,6 +177,8 @@ const useFilterDataFromEstimates = (
       services: uniq(serviceNames),
     })
   }, [data, filteredData])
+
+  console.log(filterResultResponse)
 
   return filterResultResponse
 }

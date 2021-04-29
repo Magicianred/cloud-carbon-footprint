@@ -49,26 +49,38 @@ export const ApexBarChart: FunctionComponent<ApexChartProps> = ({
     customBarColors = createCustomBarColors(pageData, emissionsData, mainTheme)
   }
 
-  const barChartData = sumCO2ByServiceOrRegion(data, dataType)
+  const barChartData: {
+    [key: string]: any
+  } = sumCO2ByServiceOrRegion(data, dataType)
 
-  const dataEntries: { x: string; y: number }[] = Object.entries(barChartData)
+  // const cloudProvider: { x: string; y: number } = Object.entries(
+  //   barChartData,
+  // ).filter((item) => item[0] === 'cloudProvider')
+
+  const dataEntries: any = Object.entries(barChartData)
     .filter((item) => item[1] > 0)
-    .map((item) => ({
-      x: item[0],
-      y: item[1],
-    }))
+    .map((item) => {
+      const updatedX = [item[0], barChartData['cloudProvider']]
+      return {
+        x: updatedX,
+        y: item[1],
+      }
+    })
     .sort((higherC02, lowerCO2) => lowerCO2.y - higherC02.y)
 
   const smallestCO2E = dataEntries?.[dataEntries?.length - 1]?.y
   const largestCO2E = dataEntries?.[0]?.y
-  const totalCO2EByDataType = dataEntries.reduce((acc, currentValue) => {
-    return acc + currentValue.y
-  }, 0)
+  const totalCO2EByDataType = dataEntries.reduce(
+    (acc: any, currentValue: any) => {
+      return acc + currentValue.y
+    },
+    0,
+  )
 
   const pageSize = 10
   const minThreshold = 1
   const maxThreshold = 100
-  const mappedDataEntries: Entry[] = dataEntries.map((entry) => {
+  const mappedDataEntries: Entry[] = dataEntries.map((entry: any) => {
     const yEntry = mapToRange(
       entry.y,
       smallestCO2E,
