@@ -1,5 +1,16 @@
 # @cloud-carbon-footprint/client
 
+## 0.7.0
+
+### Minor Changes
+
+- 6917116b: Updates the formula in the sidebar with new sources for emissions factor
+
+### Patch Changes
+
+- 8b81e904: removes end date env variable
+- 3e759462: Fixes spacing and alignment issues for right-sided axes for the Cloud Usage graph
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,5 +1,16 @@
 # @cloud-carbon-footprint/core
 
+## 0.7.0
+
+### Minor Changes
+
+- 68365cbf: implements memory calculations for gcp
+
+### Patch Changes
+
+- 3abe3dca: Adds support for AmazonNeptune storage service to AWS CostAndUSageReports
+- 7d523b59: adds default unknown processor types for azure and aws
+
 ## 0.6.1
 
 ### Patch Changes

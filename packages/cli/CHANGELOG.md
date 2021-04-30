@@ -1,5 +1,14 @@
 # @cloud-carbon-footprint/cli
 
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies [68365cbf]
+- Updated dependencies [3abe3dca]
+- Updated dependencies [7d523b59]
+  - @cloud-carbon-footprint/core@0.7.0
+
 ## 0.3.2
 
 ### Patch Changes
